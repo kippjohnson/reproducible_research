@@ -1,0 +1,11 @@
+sudo: required
+
+language: bash
+
+services:
+  - docker
+
+script:
+  - docker build -t kippjohnson/reproducible_research:latest .
+  - docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+  - docker push kippjohnson/reproducible_research
