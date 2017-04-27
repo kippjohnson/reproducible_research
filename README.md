@@ -107,4 +107,4 @@ git commit -m "Commit with customized code"
 git push origin master
 ```
 
-If all goes well, your push to Github should be working. Go to [Travis-CI.com](Travis-CI.com) or [Travis-CI.org](Travis-CI.org), where you should see the build of your project commencing. Congratulations!
+If all goes well, your push to Github should be working. Go to [Travis-CI.com](https://travis-ci.com) or [Travis-CI.org](https://travis-ci.org), where you should see the build of your project commencing. Congratulations!
