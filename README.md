@@ -1,7 +1,7 @@
 # reproducible_research
 Integrating Git, Docker, and Continuous Integration for continuous research.
 
-This repository may be cloned as it contains the setup files necessary for a minimal working environment with Docker and Travis-CI.
+This repository may be cloned to set up a minimal working environment with Docker and Travis-CI.
 
 # Introduction
 
@@ -15,13 +15,13 @@ There are two goals for this repository:
 
 The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker allows a third party to run the exact same code by simplying downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward. It also gives you unlimited free open-source projects. Students also get unlimited private projects for free.
 
- I will use R throughout this document, as it is what I do most of the work in. It should be possible to relatively easily switch to other languages. At the end, ideally, you should be able to clone this repository and then have a repository which is ready to substitute with your own code!
+ I use R in this repository, as it is the language I do most of my work in. It should be possible to relatively easily switch to other languages. At the end, ideally, you should be able to clone this repository and then have a repository which is ready to substitute with your own code.
 
 # Setup
 
 ## Github
 
-### Option 1: Clone this repository and be on your way
+### Cloning this repository
 
 This repository is set up as an example repository which is almost ready to be used in the git-docker-travis_ci workflow. After you have installed Docker and Travis-CI, you can just substitute your own code here and be on your way.
 
@@ -30,17 +30,6 @@ To clone this repository:
 ```shell
 git clone https://github.com/kippjohnson/reproducible_research.git
 ```
-
-
-### Option 2: Create an empty repository and fill it with required files
-* Make an account at [Github](https://www.github.com/) if you do not already have one.
-* Every project should have its own repository. The easiest way to create a new repository is to create one through the online web portal, and then using the following shell command to clone it to your hard drive:
-
-```shell
-git clone https://github.com/your_username/your_repository_name.git
-```
-
-This will copy the empty repository to your hard drive. The only files should be a LICENSE file (which you chose online), a README.md file, and a .git directory. You will also need to create your own Dockerfile and .travis.yml file. Consider using the files from this directory as a template.
 
 ## Docker
 
@@ -54,7 +43,7 @@ Note: I do not recommend adding a special characters in your password, as you wi
 
 ### Signing up
 
-If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) (ends with .com) or the [Travis-CI repository for public repositories]((https://travis-ci.org)) (ends with .org) and link your Github account. You should see something like the following picture:
+If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) (URL ends with .com) or the [Travis-CI repository for public repositories](https://travis-ci.org) (URL ends with .org) and link your Github account. You should see something like the following picture:
 
 ![alt text](https://github.com/kippjohnson/reproducible_research/blob/master/img/Travis_CI_private_repos.png?raw=true "Travis CI Screenshot")
 
@@ -85,7 +74,7 @@ You will need to change two lines in the Travis-CI setup file:
 
 Change the MAINTAINER line in Dockerfile to your own name and email address.
 
-3. *Edit Git repository name*
+3. *Edit Github repository name*
 
 You probably don't want your Github repository to be named "reproducible_research". You can change the name on Github using the instructions [here](https://help.github.com/articles/renaming-a-repository/).
 
