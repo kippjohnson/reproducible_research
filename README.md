@@ -1,5 +1,5 @@
 # reproducible_research
-Integrating Git, Docker, and Continuous Integration for continuous research.
+Integrating Git, Docker, and Continuous Integration for reproducible research.
 
 This repository may be cloned to set up a minimal working environment with Docker and Travis-CI.
 
@@ -9,7 +9,7 @@ This repository may be cloned to set up a minimal working environment with Docke
 
 There are two goals for this repository:
 
-1. To provide brief but comprehensive instructions for how to setup a reproducible workflow using Git, Docker, and Continuous Analysis [as suggested by Brett Beaulieu-Jones and Casey Greene in Nature Biotechnology](http://www.nature.com/nbt/journal/v35/n4/abs/nbt.3780.html "Reproducibility of computational workflows is automated using continuous analysis").
+1. To provide brief but comprehensive instructions for how to setup a reproducible workflow using Git, Docker, and Continuous Integration [as suggested by Brett Beaulieu-Jones and Casey Greene in Nature Biotechnology](http://www.nature.com/nbt/journal/v35/n4/abs/nbt.3780.html "Reproducibility of computational workflows is automated using continuous analysis").
 
 2. To actually be a working Git-Docker-Travis CI environment which can easily be cloned and put to other uses.
 
