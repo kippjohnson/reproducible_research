@@ -46,6 +46,19 @@ Note: I do not recommend adding a special characters in your password, as you wi
 
 ## Travis-CI
 
-If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) or the [Travis-CI repository for public repositories]((https://travis-ci.com)) and link your Github account. You should see something like the following picture:
+### Signing up
+
+If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) (ends with .com) or the [Travis-CI repository for public repositories]((https://travis-ci.com)) (ends with .com) and link your Github account. You should see something like the following picture:
 
 ![alt text](https://github.com/kippjohnson/reproducible_research/img/Travis_CI_private_repos.png "Travis CI Screenshot")
+
+### Adding your Docker login information
+
+Check the box for your desired repository and make sure it's on! Then, go into the settings for your specifed repository. You will need to set the following two environmental variables in order to push from Travis-CI servers to the Docker Hub:
+
+DOCKER_USERNAME
+DOCKER_PASSWORD
+
+It should look something like the following:
+
+![alt text](https://github.com/kippjohnson/reproducible_research/img/travis_ci_docker_info.png "Travis CI Docker Info")

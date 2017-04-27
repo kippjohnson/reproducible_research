@@ -1,6 +1,6 @@
 
 # This container has base R packages and R Studio already installed
-FROM rocker/r-studio
+FROM rocker/rstudio
 
 # Replace with your own information
 MAINTAINER "Kipp Johnson" kipp.william.johnson@gmail.com
