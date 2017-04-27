@@ -62,8 +62,8 @@ If you are a student, sign up for the Github Student Developer Pack with your Gi
 
 Check the box for your desired repository and make sure it's on! Then, go into the settings for your specifed repository. You will need to set the following two environmental variables in order to push from Travis-CI servers to the Docker Hub:
 
-DOCKER_USERNAME
-DOCKER_PASSWORD
+* DOCKER_USERNAME
+* DOCKER_PASSWORD
 
 It should look something like the following:
 
@@ -73,7 +73,7 @@ It should look something like the following:
 
 Now that you have all of the tools set up, you will need to change the code so that it works with your Github, Docker, and Travis-CI accounts instead of mine!
 
-1. Change .travis.yml
+1. *Edit .travis.yml*
 
 You will need to change two lines in the Travis-CI setup file:
 
@@ -81,11 +81,11 @@ You will need to change two lines in the Travis-CI setup file:
 
 * Second, change ```- docker push kippjohnson/reproducible_research``` to the same values that you stored above.
 
-2. Edit Dockerfile
+2. *Edit Dockerfile*
 
-Change the MAINTAINER line to your own name and email address.
+Change the MAINTAINER line in Dockerfile to your own name and email address.
 
-3. Change the name of the repository on Github
+3. *Edit Git repository name*
 
 You probably don't want your Github repository to be named "reproducible_research". You can change the name on Github using the instructions [here](https://help.github.com/articles/renaming-a-repository/).
 
@@ -118,4 +118,4 @@ git commit -m "Commit with customized code"
 git push origin master
 ```
 
-If all goes well, your push to Github should be working well. Go to [Travis-CI.com](Travis-CI.com) or [Travis-CI.org](Travis-CI.org), where you should see the build of your project commencing. Congratulations!
+If all goes well, your push to Github should be working. Go to [Travis-CI.com](Travis-CI.com) or [Travis-CI.org](Travis-CI.org), where you should see the build of your project commencing. Congratulations!
