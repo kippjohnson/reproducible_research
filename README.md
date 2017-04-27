@@ -48,13 +48,13 @@ Download and install docker for Mac OS here: [https://www.docker.com/docker-mac]
 
 Also make sure to create a Docker ID and Password. These give you access to Docker Hub, which allows you to easily share your Docker Containers with other researchers.
 
-Note: I do not recommend adding a special characters in your password, as you will have to escape these for compatibility with Travis-CI and bash. If this doesn't bother you, then use all of the $#~ you with!
+Note: I do not recommend adding a special characters in your password, as you will have to escape these for compatibility with Travis-CI and bash. If this doesn't bother you, then use all of the $#~ you wish!
 
 ## Travis-CI
 
 ### Signing up
 
-If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) (ends with .com) or the [Travis-CI repository for public repositories]((https://travis-ci.com)) (ends with .com) and link your Github account. You should see something like the following picture:
+If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) (ends with .com) or the [Travis-CI repository for public repositories]((https://travis-ci.org)) (ends with .org) and link your Github account. You should see something like the following picture:
 
 ![alt text](https://github.com/kippjohnson/reproducible_research/blob/master/img/Travis_CI_private_repos.png?raw=true "Travis CI Screenshot")
 
@@ -87,14 +87,14 @@ Change the MAINTAINER line to your own name and email address.
 
 3. Change the name of the repository on Github
 
-You probably don't want your github repository to be named "reproducible_research". Change the name on Github using the instructions [here](https://help.github.com/articles/renaming-a-repository/)
+You probably don't want your Github repository to be named "reproducible_research". You can change the name on Github using the instructions [here](https://help.github.com/articles/renaming-a-repository/).
 
 
 # Running Code
 
 ## How this environment works
 
-The file "Dockerfile" contains a minimal set of instructions to Docker which tells it how to build a particular Docker container. After building the Docker container, it will copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the code/ directory.
+The file "Dockerfile" contains a minimal set of instructions to Docker which tells it how to build a particular Docker container. After building the Docker container, it will copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the code/ directory using the Rscript command.
 
 ## lme4 mixed model example
 
@@ -106,7 +106,7 @@ This script installs the "lme4" R package on the Docker container. It must be ru
 
 * master_script.R
 
-This script runs a minimal linear mixed model analysis on the dataset "penicillin.csv" which is saved in the data directory of the repository.
+This script runs a linear mixed model analysis on the dataset "penicillin.csv" which is already saved in the data directory of the repository.
 
 ## Final Steps
 
