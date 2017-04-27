@@ -1,7 +1,7 @@
 # reproducible_research
 Integrating Git, Docker, and Continuous Integration for reproducible research.
 
-This repository may be cloned to set up a minimal working environment with Docker and Travis-CI.
+This repository may be cloned to set up a lightweight, minimal working environment with Docker and Travis-CI.
 
 # Introduction
 
