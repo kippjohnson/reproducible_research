@@ -50,7 +50,7 @@ Note: I do not recommend adding a special characters in your password, as you wi
 
 If you are a student, sign up for the Github Student Developer Pack with your Github ID [here](https://education.github.com/pack). Then/otherwise go to the [Travis-CI website for private repositories](https://travis-ci.com) (ends with .com) or the [Travis-CI repository for public repositories]((https://travis-ci.com)) (ends with .com) and link your Github account. You should see something like the following picture:
 
-![alt text](https://github.com/kippjohnson/reproducible_research/img/Travis_CI_private_repos.png "Travis CI Screenshot")
+![alt text](https://github.com/kippjohnson/reproducible_research/blob/master/img/Travis_CI_private_repos.png?raw=true "Travis CI Screenshot")
 
 ### Adding your Docker login information
 
@@ -61,4 +61,4 @@ DOCKER_PASSWORD
 
 It should look something like the following:
 
-![alt text](https://github.com/kippjohnson/reproducible_research/img/travis_ci_docker_info.png "Travis CI Docker Info")
+![alt text](https://github.com/kippjohnson/reproducible_research/blob/master/img/travis_ci_docker_info.png?raw=true "Travis CI Docker Info")
