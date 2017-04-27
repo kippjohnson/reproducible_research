@@ -99,7 +99,7 @@ This script runs a linear mixed model analysis on the dataset "penicillin.csv" w
 
 ## Final Steps
 
-Travis-CI runs every time that you commit your code to Github. So, change the code in install_packages or master_script, then run the following commands:
+Travis-CI runs every time that you commit your code to Github. So, change the code in install_packages.R or master_script.R, then run the following commands:
 
 ```
 git add -A
