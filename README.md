@@ -1,15 +1,21 @@
 # reproducible_research
-Integrating Git, Docker, and Continuous Integration for continuous research
+Integrating Git, Docker, and Continuous Integration for continuous research.
+
+This repository may be cloned as it contains the setup files necessary for a minimal working environment with Docker and Travis-CI.
 
 # Introduction
 
-The goal of this document is to provide brief but comprehensive instructions for how to setup a reproducible workflow using Git, Docker, and Continuous Analysis [as suggested by Brett Beaulieu-Jones and Casey Greene in Nature Biotechnology](http://www.nature.com/nbt/journal/v35/n4/abs/nbt.3780.html "Reproducibility of computational workflows is automated using continuous analysis").
+## Goals
 
-The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker is great because it allows a third party to run the exact same code by simplying downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward. It also gives you unlimited free open-source projects and, for students, unlimited private projects.
+There are two goals for this repository:
 
- I will use R throughout this document, as it is what I do most of the work in. It should be possible to relatively easily switch to other languages.
+1. To provide brief but comprehensive instructions for how to setup a reproducible workflow using Git, Docker, and Continuous Analysis [as suggested by Brett Beaulieu-Jones and Casey Greene in Nature Biotechnology](http://www.nature.com/nbt/journal/v35/n4/abs/nbt.3780.html "Reproducibility of computational workflows is automated using continuous analysis").
 
- At the end, ideally, you should be able to clone this respository and then have a repository which is ready to substitute with your own code!
+2. To actually be a working Git-Docker-Travis CI environment which can easily be cloned and put to other uses.
+
+The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker allows a third party to run the exact same code by simplying downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward. It also gives you unlimited free open-source projects. Students also get unlimited private projects for free.
+
+ I will use R throughout this document, as it is what I do most of the work in. It should be possible to relatively easily switch to other languages. At the end, ideally, you should be able to clone this repository and then have a repository which is ready to substitute with your own code!
 
 # Setup
 
@@ -34,7 +40,7 @@ git clone https://github.com/kippjohnson/reproducible_research.git
 git clone https://github.com/your_username/your_repository_name.git
 ```
 
-This will copy the empty repository to your hard drive. The only files should be a LICENSE file (which you chose online), a README.md file, and a .git directory. You will also need to create your own Dockerfile and .travis.yml file, at a minimum
+This will copy the empty repository to your hard drive. The only files should be a LICENSE file (which you chose online), a README.md file, and a .git directory. You will also need to create your own Dockerfile and .travis.yml file. Consider using the files from this directory as a template.
 
 ## Docker
 
@@ -62,3 +68,54 @@ DOCKER_PASSWORD
 It should look something like the following:
 
 ![alt text](https://github.com/kippjohnson/reproducible_research/blob/master/img/travis_ci_docker_info.png?raw=true "Travis CI Docker Info")
+
+# Repository Personalization
+
+Now that you have all of the tools set up, you will need to change the code so that it works with your Github, Docker, and Travis-CI accounts instead of mine!
+
+1. Change .travis.yml
+
+You will need to change two lines in the Travis-CI setup file:
+
+* First, change the lines ```  - docker build -t kippjohnson/reproducible_research:latest . ``` by substituting your Docker username for "kippjohnson". Choose whatever you would like to name your project and replace "reproducible_research" with that.
+
+* Second, change ```- docker push kippjohnson/reproducible_research``` to the same values that you stored above.
+
+2. Edit Dockerfile
+
+Change the MAINTAINER line to your own name and email address.
+
+3. Change the name of the repository on Github
+
+You probably don't want your github repository to be named "reproducible_research". Change the name on Github using the instructions [here](https://help.github.com/articles/renaming-a-repository/)
+
+
+# Running Code
+
+## How this environment works
+
+The file "Dockerfile" contains a minimal set of instructions to Docker which tells it how to build a particular Docker container. After building the Docker container, it will copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the code/ directory.
+
+## lme4 mixed model example
+
+This environment currently has two R scripts:
+
+* install_packages.R
+
+This script installs the "lme4" R package on the Docker container. It must be run before any scripts which call it.
+
+* master_script.R
+
+This script runs a minimal linear mixed model analysis on the dataset "penicillin.csv" which is saved in the data directory of the repository.
+
+## Final Steps
+
+Travis-CI runs every time that you commit your code to Github. So, change the code in install_packages or master_script, then run the following commands:
+
+```
+git add -A
+git commit -m "Commit with customized code"
+git push origin master
+```
+
+If all goes well, your push to Github should be working well. Go to [Travis-CI.com](Travis-CI.com) or [Travis-CI.org](Travis-CI.org), where you should see the build of your project commencing. Congratulations!
