@@ -13,7 +13,7 @@ There are two goals for this repository:
 
 2. To actually be a working Git-Docker-Travis CI environment which can easily be cloned and put to other uses.
 
-The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker allows a third party to run the exact same code by simplying downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward and you get unlimited free open-source projects. Students also get unlimited private projects for free.
+The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker allows a third party to run the exact same code by simply downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward and you get unlimited free open-source projects. Students also get unlimited private projects for free.
 
 This repository uses R. It is possible to switch to other languages by starting wtih a different Dockerfile (explained later).
 
