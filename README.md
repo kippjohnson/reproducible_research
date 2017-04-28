@@ -93,7 +93,7 @@ You probably don't want your Github repository to be named "reproducible_researc
 
 The file "Dockerfile" contains a minimal set of instructions to the Docker application which tells it how to build a particular Docker container. We start with the [Rocker](https://github.com/rocker-org/rocker) Docker container, which has pre-installed base R and R Studio Server.
 
-After building downloading and building our Docker container, the Dockerfile contains instructions to copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the copied /code directory inside the Docker container with the Rscript shell command.
+After building downloading and building our Docker container, the Dockerfile contains instructions to copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the copied /code directory inside the Docker container with the ```Rscript``` shell command.
 
 ## lme4 mixed model example
 
