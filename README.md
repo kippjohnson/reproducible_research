@@ -13,9 +13,9 @@ There are two goals for this repository:
 
 2. To actually be a working Git-Docker-Travis CI environment which can easily be cloned and put to other uses.
 
-The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker allows a third party to run the exact same code by simplying downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward. It also gives you unlimited free open-source projects. Students also get unlimited private projects for free.
+The end product will be a Docker container that contains all of the code and data necessary to ensure computational reproducibility of your work or model. Docker allows a third party to run the exact same code by simplying downloading your Docker container. We will use Git for version control coupled with Continuous Analysis. There are a number of continuous analysis tools; I found that I prefer [travis-ci](https://travis-ci.com) because it is relatively straightforward and you get unlimited free open-source projects. Students also get unlimited private projects for free.
 
- I use R in this repository, as it is the language I do most of my work in. It should be possible to relatively easily switch to other languages. At the end, ideally, you should be able to clone this repository and then have a repository which is ready to substitute with your own code.
+This repository uses R. It is possible to switch to other languages by starting wtih a different Dockerfile (explained later).
 
 # Setup
 
@@ -31,13 +31,22 @@ To clone this repository:
 git clone https://github.com/kippjohnson/reproducible_research.git
 ```
 
+After you have cloned the repository, create a new empty repository on Github. Then navigate to the reproducible_research directory that you cloned from Github. Use the following lines of code to upload this directory to your personal Github account:
+
+```
+git remote add origin your_github_repository_URL
+git push -u origin master
+```
+
+Where ```your_github_repository_URL``` is the URL of the repository you just created on Github.
+
 ## Docker
 
-Download and install docker for Mac OS here: [https://www.docker.com/docker-mac](https://www.docker.com/docker-mac)
+Download and install Docker for Mac OS here: [https://www.docker.com/docker-mac](https://www.docker.com/docker-mac)
 
-Also make sure to create a Docker ID and Password. These give you access to Docker Hub, which allows you to easily share your Docker Containers with other researchers.
+Make sure to create a Docker ID and Password. This gives you access to Docker Hub, which allows you to easily share your Docker Containers with other researchers.
 
-Note: I do not recommend adding a special characters in your password, as you will have to escape these for compatibility with Travis-CI and bash. If this doesn't bother you, then use all of the $#~ you wish!
+I do not recommend adding a special characters in your password, as you will have to escape these for compatibility with Travis-CI and bash. If this doesn't bother you, then use all of the $#~ you wish!
 
 ## Travis-CI
 
@@ -49,7 +58,7 @@ If you are a student, sign up for the Github Student Developer Pack with your Gi
 
 ### Adding your Docker login information
 
-Check the box for your desired repository and make sure it's on! Then, go into the settings for your specifed repository. You will need to set the following two environmental variables in order to push from Travis-CI servers to the Docker Hub:
+Check the box for your desired repository and make sure it's on. Then, go into the settings for your specifed repository. You will need to set the following two environmental variables in order to push from Travis-CI servers to the Docker Hub:
 
 * DOCKER_USERNAME
 * DOCKER_PASSWORD
@@ -60,9 +69,9 @@ It should look something like the following:
 
 # Repository Personalization
 
-Now that you have all of the tools set up, you will need to change the code so that it works with your Github, Docker, and Travis-CI accounts instead of mine!
+Now that you have all of the tools set up, you will need to change the code so that it works with your Github, Docker, and Travis-CI accounts instead of mine.
 
-1. *Edit .travis.yml*
+1. **Edit .travis.yml**
 
 You will need to change two lines in the Travis-CI setup file:
 
@@ -70,20 +79,21 @@ You will need to change two lines in the Travis-CI setup file:
 
 * Second, change ```- docker push kippjohnson/reproducible_research``` to the same values that you stored above.
 
-2. *Edit Dockerfile*
+2. **Edit Dockerfile**
 
 Change the MAINTAINER line in Dockerfile to your own name and email address.
 
-3. *Edit Github repository name*
+3. **Edit Github repository name**
 
 You probably don't want your Github repository to be named "reproducible_research". You can change the name on Github using the instructions [here](https://help.github.com/articles/renaming-a-repository/).
-
 
 # Running Code
 
 ## How this environment works
 
-The file "Dockerfile" contains a minimal set of instructions to Docker which tells it how to build a particular Docker container. After building the Docker container, it will copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the code/ directory using the Rscript command.
+The file "Dockerfile" contains a minimal set of instructions to the Docker application which tells it how to build a particular Docker container. We start with the [Rocker](https://github.com/rocker-org/rocker) Docker container, which has pre-installed base R and R Studio Server.
+
+After building downloading and building our Docker container, the Dockerfile contains instructions to copy data and code stored in this repository (in the /data and /code directories, respectively) into the Docker. Finally, it will run code from the copied /code directory inside the Docker container with the Rscript shell command.
 
 ## lme4 mixed model example
 
@@ -91,15 +101,15 @@ This environment currently has two R scripts:
 
 * install_packages.R
 
-This script installs the "lme4" R package on the Docker container. It must be run before any scripts which call it.
+This script installs the "lme4" R package on the Docker container. It must be run before the following analysis script.
 
 * master_script.R
 
-This script runs a linear mixed model analysis on the dataset "penicillin.csv" which is already saved in the data directory of the repository.
+This script performs a linear mixed model analysis on the dataset "penicillin.csv". This file is loaded from the data directory of the Docker container.
 
 ## Final Steps
 
-Travis-CI runs every time that you commit your code to Github. So, change the code in install_packages.R or master_script.R, then run the following commands:
+Travis-CI runs every time that you commit your code to Github. To build your own container, change the code in install_packages.R or master_script.R, then run the following commands:
 
 ```
 git add -A
@@ -107,4 +117,4 @@ git commit -m "Commit with customized code"
 git push origin master
 ```
 
-If all goes well, your push to Github should be working. Go to [Travis-CI.com](https://travis-ci.com) or [Travis-CI.org](https://travis-ci.org), where you should see the build of your project commencing. Congratulations!
+If all goes well, your push to Github should be working. Go to [Travis-CI.com](https://travis-ci.com) or [Travis-CI.org](https://travis-ci.org), where you should see the build of your project commencing. When it finishes, your completed build will be pushed to Docker Hub where it can be downloaded and run by other researchers. Congratulations!
