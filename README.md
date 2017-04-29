@@ -34,11 +34,9 @@ git clone https://github.com/kippjohnson/reproducible_research.git
 After you have cloned the repository, create a new empty repository on Github. Then navigate to the reproducible_research directory that you cloned from Github. Use the following lines of code to upload this directory to your personal Github account:
 
 ```
-git remote add origin your_github_repository_URL
+git remote set-url origin https://github.com/your_username/your_repo_name.git
 git push -u origin master
 ```
-
-Where ```your_github_repository_URL``` is the URL of the repository you just created on Github.
 
 ## Docker
 
